@@ -71,16 +71,16 @@ namespace AwesomeSeries.Services
             }
         }
 
-        public async Task NavigateToAsync<TViewModel>() where TViewModel : ViewModelBase
+        public Task NavigateToAsync<TViewModel>() where TViewModel : ViewModelBase
             => InternalNavigateToAsync(typeof(TViewModel), null);
 
-        public async Task NavigateToAsync<TViewModel>(object parameter) where TViewModel : ViewModelBase
+        public Task NavigateToAsync<TViewModel>(object parameter) where TViewModel : ViewModelBase
             => InternalNavigateToAsync(typeof(TViewModel), parameter);
         
-        public async Task NavigateToAsync(Type viewModelType)
+        public Task NavigateToAsync(Type viewModelType)
             => InternalNavigateToAsync(viewModelType, null);
         
-        public async Task NavigateToAsync(Type viewModelType, object parameter)
+        public Task NavigateToAsync(Type viewModelType, object parameter)
         => InternalNavigateToAsync(viewModelType, parameter);
 
         async Task InternalNavigateToAsync (Type viewModelType, object parameter)

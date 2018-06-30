@@ -14,7 +14,7 @@ namespace AwesomeSeries.Services.API
 
         public SerieService(ITmdbApi api)
         {
-            api = _api;
+            _api = api;
         }
 
         public async Task<SerieResponse> getSerieAsync()
