@@ -1,8 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Text;
 using Autofac;
+using AwesomeSeries.Infra;
+using AwesomeSeries.Infra.API;
+using AwesomeSeries.Infra.HttpTools;
 using AwesomeSeries.Services;
+using AwesomeSeries.Services.API;
+using Refit;
 
 namespace AwesomeSeries.ViewModel.Base
 {
@@ -22,9 +28,19 @@ namespace AwesomeSeries.ViewModel.Base
             _containerBuilder = new ContainerBuilder();
 
             _containerBuilder.RegisterType<NavigationService>().As<INavigationService>();
-
+            _containerBuilder.RegisterType<SerieService>().As<ISerieService>();
             _containerBuilder.RegisterType<MainViewModel>();
             _containerBuilder.RegisterType<DetailViewModel>();
+            _containerBuilder.Register(api => {
+
+                var client = new HttpClient(new HttpLoggingHandler())
+                {
+                    BaseAddress = new Uri(AppSettings.ApiUrl),
+                    Timeout = TimeSpan.FromSeconds(90)
+                };
+
+                return RestService.For<ITmdbApi>(client);
+            }).As<ITmdbApi>().InstancePerDependency();
         }
 
         public T Resolve<T>()
