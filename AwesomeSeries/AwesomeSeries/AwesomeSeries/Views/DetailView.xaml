@@ -3,10 +3,20 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AwesomeSeries.Views.DetailView">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout 
+            Orientation="Horizontal"
+            VerticalOptions="FillAndExpand"
+            HorizontalOptions="FillAndExpand">
+            <Image Source="{Binding Poster}"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="CenterAndExpand" 
+                                   HeightRequest="320" />
+            <StackLayout>
+                <Label Text="{Binding Name}" FontSize="Large" />
+                <Label Text="{Binding Votes}" FontSize="Large" />
+                <Label Text="{Binding Overview}" FontSize="Large" />
+                
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
