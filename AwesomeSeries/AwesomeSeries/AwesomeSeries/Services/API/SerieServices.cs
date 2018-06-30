@@ -11,6 +11,7 @@ namespace AwesomeSeries.Services.API
         public Task<IEnumerable<SerieResponse>> getSerieAsync()
         {
             throw new NotImplementedException();
+            //dfdfdfd
         }
     }
 }
