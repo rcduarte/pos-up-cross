@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Autofac;
+using AwesomeSeries.Services;
 
 namespace AwesomeSeries.ViewModel.Base
 {
@@ -19,6 +20,11 @@ namespace AwesomeSeries.ViewModel.Base
         public ViewModelLocator()
         {
             _containerBuilder = new ContainerBuilder();
+
+            _containerBuilder.RegisterType<NavigationService>().As<INavigationService>();
+
+            _containerBuilder.RegisterType<MainViewModel>();
+            _containerBuilder.RegisterType<DetailViewModel>();
         }
 
         public T Resolve<T>()

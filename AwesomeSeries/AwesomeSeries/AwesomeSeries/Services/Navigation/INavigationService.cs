@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AwesomeSeries.Services
 {
-    public interface INavigation
+    public interface INavigationService
     {
         Task Initialize();
         Task NavigateToAsync<TViewModel>() where TViewModel : ViewModelBase;
