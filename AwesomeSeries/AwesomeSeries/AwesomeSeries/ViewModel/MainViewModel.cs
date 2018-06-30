@@ -1,6 +1,7 @@
 ﻿using AwesomeSeries.Models;
 using AwesomeSeries.Services;
 using AwesomeSeries.Services.API;
+using AwesomeSeries.Services.Navigation;
 using AwesomeSeries.ViewModel.Base;
 using System;
 using System.Collections.Generic;
@@ -17,35 +18,31 @@ namespace AwesomeSeries.ViewModel
     {
         readonly ISerieService _serieService;
 
-        public ICommand ItemClickCommand { get; } 
-
-        public ObservableCollection<Serie> Itens { get; }
+        public ICommand ItemClickCommand { get; }
+        public ObservableCollection<Serie> Items { get; }
 
         public MainViewModel(ISerieService serieService) : base("Awesome Series")
         {
             _serieService = serieService;
-
-            Itens = new ObservableCollection<Serie>();
-
-            ItemClickCommand = new Command<Serie>(async (item) => await ItemCommandExecute(item)); 
+            Items = new ObservableCollection<Serie>();
+            ItemClickCommand = new Command<Serie>(async (item)
+                => await ItemClickCommandExecute(item));
         }
 
-        private async Task ItemCommandExecute(Serie item)
+        async Task ItemClickCommandExecute(Serie serie)
         {
-            if (item != null)
-            {
-                await navigateService.NavigateToAsync<DetailViewModel>(item);
-            }
+            if (serie != null)
+                await navigateService.NavigateToAsync<DetailViewModel>(serie);
         }
 
-        public override async Task InitializeAsync (object navgationData)
+        public override async Task InitializeAsync(object navgationData)
         {
             await base.InitializeAsync(navgationData);
 
-            await LoadDataAsuncAsync();
+            await LoadDataAsync();
         }
 
-        private async Task LoadDataAsuncAsync()
+        async Task LoadDataAsync()
         {
             var result = await _serieService.getSerieAsync();
 
@@ -54,10 +51,8 @@ namespace AwesomeSeries.ViewModel
 
         private void AddItens(SerieResponse result)
         {
-            Itens.Clear();
-
-            result?.Series.ToList()?.ForEach(i => Itens.Add(i));
-
+            Items.Clear();
+            result?.Series.ToList()?.ForEach(i => Items.Add(i));
         }
     }
 }

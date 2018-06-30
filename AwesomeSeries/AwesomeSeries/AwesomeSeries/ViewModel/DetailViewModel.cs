@@ -1,12 +1,15 @@
-﻿using AwesomeSeries.ViewModel.Base;
-using AwesomeSeries.Models;
+﻿using AwesomeSeries.Models;
+using AwesomeSeries.ViewModel.Base;
+using System;
+using System.Collections.Generic;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace AwesomeSeries.ViewModel
 {
     public class DetailViewModel : ViewModelBase
     {
-
+        //name
         string _name;
         public string Name
         {
@@ -14,6 +17,23 @@ namespace AwesomeSeries.ViewModel
             set { _name = value; OnPropertyChanged(); }
         }
 
+        //overview
+        string _overview;
+        public string Overview
+        {
+            get { return _overview; }
+            set { _overview = value; OnPropertyChanged(); }
+        }
+
+        //poster
+        string _poster;
+        public string Poster
+        {
+            get { return _poster; }
+            set { _poster = value; OnPropertyChanged(); }
+        }
+
+        //backdrop
         string _backdrop;
         public string Backdrop
         {
@@ -21,13 +41,15 @@ namespace AwesomeSeries.ViewModel
             set { _backdrop = value; OnPropertyChanged(); }
         }
 
-        string _votes;
-        public string Votes
+        //votes
+        double _votes;
+        public double Votes
         {
             get { return _votes; }
             set { _votes = value; OnPropertyChanged(); }
         }
 
+        //release date
         string _releaseDate;
         public string ReleaseDate
         {
@@ -37,7 +59,6 @@ namespace AwesomeSeries.ViewModel
 
         public DetailViewModel() : base("")
         {
-
         }
 
         public override async Task InitializeAsync(object parameter)
@@ -45,13 +66,16 @@ namespace AwesomeSeries.ViewModel
             var serie = (parameter as Serie);
 
             Title = serie.Name;
-            Name = serie.Name;
-            //Overview
-            //Poster
-            Backdrop = serie.BackdropPath;
+            Name = serie.OriginalName;
+            Overview = serie.Overview;
+
+            Poster = serie.Poster;
+            Backdrop = serie.Backdrop;
+            ReleaseDate = serie.ReleaseDate;
+
+            Votes = serie.VoteAverage;
 
             await base.InitializeAsync(parameter);
         }
-
     }
 }

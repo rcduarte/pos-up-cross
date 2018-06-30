@@ -9,7 +9,7 @@ using AwesomeSeries.Views;
 using Xamarin.Forms;
 
 
-namespace AwesomeSeries.Services
+namespace AwesomeSeries.Services.Navigation
 {
     public class NavigationService : INavigationService
     {

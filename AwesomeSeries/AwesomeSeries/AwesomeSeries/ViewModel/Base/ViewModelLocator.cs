@@ -8,6 +8,7 @@ using AwesomeSeries.Infra.API;
 using AwesomeSeries.Infra.HttpTools;
 using AwesomeSeries.Services;
 using AwesomeSeries.Services.API;
+using AwesomeSeries.Services.Navigation;
 using Refit;
 
 namespace AwesomeSeries.ViewModel.Base

@@ -1,4 +1,5 @@
 using AwesomeSeries.Services;
+using AwesomeSeries.Services.Navigation;
 using AwesomeSeries.ViewModel.Base;
 using System;
 using Xamarin.Forms;
