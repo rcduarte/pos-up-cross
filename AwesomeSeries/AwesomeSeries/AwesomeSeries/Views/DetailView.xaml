@@ -3,19 +3,32 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AwesomeSeries.Views.DetailView">
     <ContentPage.Content>
-        <StackLayout 
-            Orientation="Horizontal"
-            VerticalOptions="FillAndExpand"
-            HorizontalOptions="FillAndExpand">
-            <Image Source="{Binding Poster}"
-                                   VerticalOptions="Center"
-                                   HorizontalOptions="CenterAndExpand" 
-                                   HeightRequest="320" />
-            <StackLayout>
-                <Label Text="{Binding Name}" FontSize="Large" />
-                <Label Text="{Binding Votes}" FontSize="Large" />
-                <Label Text="{Binding Overview}" FontSize="Large" />
-                
+        <StackLayout  Orientation="Vertical"
+                      VerticalOptions="Center"
+                      HorizontalOptions="Start"
+                      Margin="5">
+            <Label Text="{Binding Name}" FontSize="Medium" TextColor="DarkBlue" />
+            <StackLayout  Orientation="Horizontal"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand">
+                <Label Text="Nota: {Binding Votes}" HorizontalOptions="StartAndExpand" FontSize="Micro" />
+                <Label Text="{Binding ReleaseDate}" HorizontalOptions="EndAndExpand" FontSize="Micro" />
+            </StackLayout>
+            <StackLayout 
+                        Orientation="Horizontal"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand">
+
+                <Image Source="{Binding Poster}"
+                                                VerticalOptions="Center"
+                                                HorizontalOptions="Start" 
+                                                HeightRequest="180" />
+                <StackLayout 
+                            Orientation="Vertical"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Start">
+                    <Label Text="{Binding Overview}" HorizontalTextAlignment="Center" FontSize="Micro" />
+                </StackLayout>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>
