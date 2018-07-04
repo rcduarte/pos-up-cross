@@ -1,35 +1,38 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AwesomeSeries.Views.DetailView">
+             x:Class="AwesomeSeries.Views.DetailView"
+             Title="{Binding Title}">
     <ContentPage.Content>
-        <StackLayout  Orientation="Vertical"
-                      VerticalOptions="Center"
-                      HorizontalOptions="Start"
-                      Margin="5">
-            <Label Text="{Binding Name}" FontSize="Medium" TextColor="DarkBlue" />
-            <StackLayout  Orientation="Horizontal"
-                        VerticalOptions="FillAndExpand"
-                        HorizontalOptions="FillAndExpand">
-                <Label Text="Nota: {Binding Votes}" HorizontalOptions="StartAndExpand" FontSize="Micro" />
-                <Label Text="{Binding ReleaseDate}" HorizontalOptions="EndAndExpand" FontSize="Micro" />
-            </StackLayout>
-            <StackLayout 
-                        Orientation="Horizontal"
-                        VerticalOptions="FillAndExpand"
-                        HorizontalOptions="FillAndExpand">
-
-                <Image Source="{Binding Poster}"
-                                                VerticalOptions="Center"
-                                                HorizontalOptions="Start" 
-                                                HeightRequest="180" />
+        <ScrollView>
+            <StackLayout  Orientation="Vertical"
+                          VerticalOptions="Center"
+                          HorizontalOptions="Start"
+                          Margin="5">
+                <Label Text="{Binding Name}" FontSize="Medium" TextColor="DarkBlue" />
+                <StackLayout  Orientation="Horizontal"
+                            VerticalOptions="FillAndExpand"
+                            HorizontalOptions="FillAndExpand">
+                    <Label Text="{Binding Votes}" HorizontalOptions="StartAndExpand" FontSize="Micro" />
+                    <Label Text="{Binding ReleaseDate}" HorizontalOptions="EndAndExpand" FontSize="Micro" />
+                </StackLayout>
                 <StackLayout 
-                            Orientation="Vertical"
-                            VerticalOptions="Center"
-                            HorizontalOptions="Start">
-                    <Label Text="{Binding Overview}" HorizontalTextAlignment="Center" FontSize="Micro" />
+                            Orientation="Horizontal"
+                            VerticalOptions="FillAndExpand"
+                            HorizontalOptions="FillAndExpand">
+
+                    <Image Source="{Binding Poster}"
+                                                    VerticalOptions="Center"
+                                                    HorizontalOptions="Start" 
+                                                    HeightRequest="180" />
+                    <StackLayout 
+                                Orientation="Vertical"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Start">
+                        <Label Text="{Binding Overview}" HorizontalTextAlignment="Center" FontSize="Micro" />
+                    </StackLayout>
                 </StackLayout>
             </StackLayout>
-        </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
